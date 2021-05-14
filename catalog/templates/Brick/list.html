@@ -9,8 +9,8 @@
         <h2 class="text-center">{{ view_head }}</h2>
     </div> 
 </div> 
-<div class="row"> 
-    {% for brick in bricks %}
+<div class="row">
+    {% for brick in brick_list %}
     <div class="col-sm-4 col-xl-2">
         <div class="card"> 
             {% if brick.image %}
@@ -18,10 +18,15 @@
             {% endif %} 
             <div class="card-body"> 
                 <h4 class="card-title">{{ brick.name }}</h4>
-                <p><strong>Factory number: [{{ film.rate }}]</strong></p>
+                <p><strong>Factory number: [{{ brick.id }}]</strong></p>
             </div>
         </div> 
     </div> 
     {% endfor %} 
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        {% bootstrap_paginate page_obj range=10 %}
+    </div>
 </div>
 {% endblock %} 

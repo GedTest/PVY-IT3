@@ -1,6 +1,7 @@
 from django.core.validators import MinValueValidator
 from django.db.models import Model, IntegerField, CharField, ImageField, OneToOneField, \
     CASCADE, FloatField, ManyToManyField
+from django.urls import reverse
 
 
 def image_path(instance, filename):
