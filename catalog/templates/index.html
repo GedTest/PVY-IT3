@@ -7,16 +7,16 @@
     </div>
 </div>
 <div class="row">
-    {% for film in films %}
+    {% for brick in bricks %}
     <div class="col-sm-4">
         <div class="card">
-            {% if film.image %}
-            <img class="card-img-top" src="media/{{ film.image }}" alt="{{ film.name }}">
+            {% if brick.image %}
+            <img class="card-img-top" src="media/{{ brick.image }}" alt="{{ brick.name }}">
             {% endif %}
             <div class="card-body">
-                <h4 class="card-title">Name: {{ film.name }}</h4>
-                <p><strong>Color:</strong> {{ film.color }}</p>
-                <a href="#" class="btn btn-primary">Podrobnosti</a>
+                <h4 class="card-title">Name: {{ brick.name }}</h4>
+                <p><strong>Color:</strong> {{ brick.color }}</p>
+                <a href="{% url 'brick-detail' brick.pk %}" class="btn btn-primary">Podrobnosti</a>
             </div>
         </div>
     </div>

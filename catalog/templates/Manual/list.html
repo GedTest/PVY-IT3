@@ -10,16 +10,16 @@
     </div>
 </div>
 <div class="row">
-    {% for brick in brick_list %}
+    {% for manual in manual_list %}
     <div class="col-sm-4 col-xl-2">
         <div class="card"> 
-            {% if brick.image %}
-            <img class="card-img-top" src="{{ brick.image }}" alt="{{ brick.name }}">
+            {% if manual.image %}
+            <img class="card-img-top" src="{{ manual.image }}" alt="{{ manual.name }}">
             {% endif %} 
             <div class="card-body"> 
-                <h4 class="card-title">{{ brick.name }}</h4>
-                <p><strong>Catalog number: [{{ brick.id }}]</strong></p>
-                <a href="{% url 'brick-detail' brick.pk %}" class="btn btn-primary">Details</a>
+                <h4 class="card-title">{{ manual.name }}</h4>
+                <p><strong>Catalog number: [{{ manual.id }}]</strong></p>
+                <a href="{% url 'manual-detail' manual.pk %}" class="btn btn-primary">Details</a>
             </div>
         </div> 
     </div> 
@@ -32,7 +32,7 @@
 </div>
 <div class="row mb-3">
     <div class="col-sm-12 text-center">
-        <a href="{% url 'brick_create' %}" class="btn btn-danger">Add new brick</a>
+        <a href="{% url 'manual_create' %}" class="btn btn-danger">Add new manual</a>
     </div>
 </div>
-{% endblock %} 
+{% endblock %}

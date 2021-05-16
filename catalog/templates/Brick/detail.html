@@ -10,11 +10,19 @@
         <p>Name: {{ brick.name }}</p>
         <div class="row">
             <div class="col-md-3">
+                {% if brick.image %}
                 <a href="{{ brick.image }}" data-toggle="lightbox" data-gallery="gallery">
                     <img src="{{ brick.image }}" class="img-fluid" alt="Image of brick">
                 </a>
+                {% endif %}
             </div>
         </div>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-sm-12 text-center">
+        <a href="{% url 'brick_update' brick.pk %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'brick_delete' brick.pk %}" class="btn btn-danger">Delete</a>
     </div>
 </div>
 {% endblock %}

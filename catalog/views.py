@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
 from catalog.models import Brick, Manual, Set
 
@@ -11,27 +12,21 @@ def index(request):
     number_of_bricks = Brick.objects.all().count()
 
     # Do proměnné films se uloží 3 filmy uspořádané podle hodnocení (sestupně)
-    films = Brick.objects.order_by('-type')[:3]
-    for film in films:
-        print("FILM.IMAGE: ", film.image)
+    bricks = Brick.objects.order_by('-type')[:3]
+    for brick in bricks:
+        print("FILM.IMAGE: ", brick.image)
 
     """ Do proměnné context, která je typu slovník (dictionary) uložíme hodnoty obou proměnných """
     context = {
         'number_of_bricks': number_of_bricks,
-        'films': films
+        'bricks': bricks
     }
 
     """ Pomocí metody render vyrendrujeme šablonu index.html a předáme ji hodnoty v proměnné context k zobrazení """
     return render(request, 'index.html', context=context)
 
 
-
-
-
-#def index(request):
-#    return render(request, 'index.html')
-
-
+# BRICK VIEWS
 class BrickListView(ListView):
     model = Brick
 
@@ -45,3 +40,89 @@ class BrickDetailView(DetailView):
 
     context_object_name = 'brick'
     template_name = 'Brick/detail.html'
+
+
+class BrickCreateView(CreateView):
+    model = Brick
+
+    fields = ['id', 'name', 'color', 'type', 'image', 'sets']
+
+
+class BrickUpdateView(UpdateView):
+    model = Brick
+
+    fields = ['id', 'name', 'color', 'type', 'image', 'sets']
+
+
+class BrickDeleteView(DeleteView):
+    model = Brick
+
+    success_url = reverse_lazy('brick_list')
+
+
+# MANUAL VIEWS
+class ManualListView(ListView):
+    model = Manual
+
+    content_object_name = 'manual_list'
+    template_name = 'Manual/list.html'
+    paginate_by = 5
+
+
+class ManualDetailView(DetailView):
+    model = Manual
+
+    context_object_name = 'manual'
+    template_name = 'Manual/detail.html'
+
+
+class ManualCreateView(CreateView):
+    model = Manual
+
+    fields = ['id', 'name', 'number_of_pages', 'image', 'set']
+
+
+class ManualUpdateView(UpdateView):
+    model = Manual
+
+    fields = ['id', 'name', 'number_of_pages', 'image', 'set']
+
+
+class ManualDeleteView(DeleteView):
+    model = Manual
+
+    success_url = reverse_lazy('manual_list')
+
+
+# SET VIEWS
+class SetListView(ListView):
+    model = Set
+
+    content_object_name = 'set_list'
+    template_name = 'Set/list.html'
+    paginate_by = 5
+
+
+class SetDetailView(DetailView):
+    model = Set
+
+    context_object_name = 'set'
+    template_name = 'Set/detail.html'
+
+
+class SetCreateView(CreateView):
+    model = Set
+
+    fields = ['id', 'name', 'year', 'number_of_pieces', 'price', 'image']
+
+
+class SetUpdateView(UpdateView):
+    model = Set
+
+    fields = ['id', 'name', 'year', 'number_of_pieces', 'price', 'image']
+
+
+class SetDeleteView(DeleteView):
+    model = Set
+
+    success_url = reverse_lazy('set_list')
