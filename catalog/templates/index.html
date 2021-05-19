@@ -11,7 +11,7 @@
     <div class="col-sm-4">
         <div class="card">
             {% if brick.image %}
-            <img class="card-img-top" src="media/{{ brick.image }}" alt="{{ brick.name }}">
+            <img class="card-img-top" src="{{ brick.image.url }}" alt="{{ brick.name }}">
             {% endif %}
             <div class="card-body">
                 <h4 class="card-title">Name: {{ brick.name }}</h4>

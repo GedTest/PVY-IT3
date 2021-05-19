@@ -52,4 +52,4 @@ class Brick(Model):
         return f'{self.name} [{self.id}] is {self.type} type, of {self.color} color'
 
     class Meta:
-        ordering = ['name']
+        ordering = ['-color']

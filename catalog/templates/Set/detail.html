@@ -11,8 +11,8 @@
         <div class="row">
             <div class="col-md-3">
                 {% if set.image %}
-                <a href="{{ set.image }}" data-toggle="lightbox" data-gallery="gallery">
-                    <img src="{{ set.image }}" class="img-fluid" alt="Image of set">
+                <a href="{{ set.image.url }}" data-toggle="lightbox" data-gallery="gallery">
+                    <img src="{{ set.image.url }}" class="img-fluid" alt="Image of set">
                 </a>
                 {% endif %}
             </div>

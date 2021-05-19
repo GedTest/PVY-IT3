@@ -11,8 +11,8 @@
         <div class="row">
             <div class="col-md-3">
                 {% if brick.image %}
-                <a href="{{ brick.image }}" data-toggle="lightbox" data-gallery="gallery">
-                    <img src="{{ brick.image }}" class="img-fluid" alt="Image of brick">
+                <a href="{{ brick.image.url }}" data-toggle="lightbox" data-gallery="gallery">
+                    <img src="{{ brick.image.url }}" class="img-fluid" alt="Image of brick">
                 </a>
                 {% endif %}
             </div>

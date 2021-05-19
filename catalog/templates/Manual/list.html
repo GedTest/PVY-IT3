@@ -14,7 +14,7 @@
     <div class="col-sm-4 col-xl-2">
         <div class="card"> 
             {% if manual.image %}
-            <img class="card-img-top" src="{{ manual.image }}" alt="{{ manual.name }}">
+            <img class="card-img-top" src="{{ manual.image.url }}" alt="{{ manual.name }}">
             {% endif %} 
             <div class="card-body"> 
                 <h4 class="card-title">{{ manual.name }}</h4>
