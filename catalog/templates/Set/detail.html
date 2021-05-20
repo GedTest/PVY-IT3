@@ -5,9 +5,10 @@
 {% block content %}
 <div class="row mt-5 mb-3">
     <div class="col-lg-6 mb-3">
-        <h2> {{ set.name|upper }} </h2>
-        <p>Color: {{ set.color }}</p>
-        <p>Name: {{ set.name }}</p>
+        <h2> {{ set.name|upper }} [{{ set.id }}]</h2>
+        <p>This set was released in : {{ set.year }}</p>
+        <p>Has {{ set.number_of_pieces }} pieces</p>
+        <p>Price: {{ set.price }}$</p>
         <div class="row">
             <div class="col-md-3">
                 {% if set.image %}

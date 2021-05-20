@@ -5,9 +5,9 @@
 {% block content %}
 <div class="row mt-5 mb-3">
     <div class="col-lg-6 mb-3">
-        <h2> {{ brick.name|upper }} </h2>
+        <h2> {{ brick.name|upper }} [{{ brick.id }}] </h2>
         <p>Color: {{ brick.color }}</p>
-        <p>Name: {{ brick.name }}</p>
+        <p>Type: {{ brick.type }}</p>
         <div class="row">
             <div class="col-md-3">
                 {% if brick.image %}

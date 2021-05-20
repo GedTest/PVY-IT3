@@ -5,9 +5,9 @@
 {% block content %}
 <div class="row mt-5 mb-3">
     <div class="col-lg-6 mb-3">
-        <h2> {{ manual.name|upper }} </h2>
-        <p>Color: {{ manual.color }}</p>
-        <p>Name: {{ manual.name }}</p>
+        <h2> {{ manual.name|upper }} [{{ manual.id }}] </h2>
+        <p>Number of pages: {{ manual.number_of_pages }}</p>
+        <p>Set: {{ manual.set }}</p>
         <div class="row">
             <div class="col-md-3">
                 {% if manual.image %}
