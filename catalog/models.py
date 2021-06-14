@@ -20,6 +20,9 @@ class Set(Model):
     price = FloatField(verbose_name='price', null=True, default=0.0, validators=[MinValueValidator(0.0)])
     image = ImageField(upload_to=image_path, null=True, blank=True)
 
+    def get_absolute_url(self):
+        return reverse('set-detail', args=[str(self.id)])
+
     def __str__(self):
         return f'{self.name} [{self.id}] releasd in year: {self.year}, has {self.number_of_pieces} pieces!'
 
@@ -32,6 +35,9 @@ class Manual(Model):
     number_of_pages = IntegerField(null=True, default=0, validators=[MinValueValidator(0)])
     image = ImageField(upload_to=image_path, null=True)
     set = OneToOneField(Set, on_delete=CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('manual-detail', args=[str(self.id)])
 
     def __str__(self):
         return f'{self.name} [{self.id}] has {self.number_of_pages} pages'
@@ -47,6 +53,9 @@ class Brick(Model):
     image = ImageField(upload_to=image_path, null=True)
 
     sets = ManyToManyField(Set)
+
+    def get_absolute_url(self):
+        return reverse('brick-detail', args=[str(self.id)])
 
     def __str__(self):
         return f'{self.name} [{self.id}] is {self.type} type, of {self.color} color'
