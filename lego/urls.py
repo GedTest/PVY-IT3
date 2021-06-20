@@ -24,6 +24,7 @@ urlpatterns = [
     # připsáno
     path('catalog/', include('catalog.urls')),
     path('', RedirectView.as_view(url='catalog/')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 # připsáno
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

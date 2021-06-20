@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
+from catalog.forms import BrickModelForm, ManualModelForm, SetModelForm
 from catalog.models import Brick, Manual, Set
 
 
@@ -45,13 +46,16 @@ class BrickDetailView(DetailView):
 class BrickCreateView(CreateView):
     model = Brick
 
-    fields = ['id', 'name', 'color', 'type', 'image', 'sets']
+    form_class = BrickModelForm
+    template_name = 'catalog/brick_bootstrap_form.html'
 
 
 class BrickUpdateView(UpdateView):
     model = Brick
 
-    fields = ['id', 'name', 'color', 'type', 'image', 'sets']
+    #fields = ['id', 'name', 'color', 'type', 'image', 'sets']
+    form_class = BrickModelForm
+    template_name = 'catalog/brick_bootstrap_form.html'
 
 
 class BrickDeleteView(DeleteView):
@@ -79,13 +83,15 @@ class ManualDetailView(DetailView):
 class ManualCreateView(CreateView):
     model = Manual
 
-    fields = ['id', 'name', 'number_of_pages', 'image', 'set']
+    form_class = ManualModelForm
+    template_name = 'catalog/manual_bootstrap_form.html'
 
 
 class ManualUpdateView(UpdateView):
     model = Manual
 
-    fields = ['id', 'name', 'number_of_pages', 'image', 'set']
+    form_class = ManualModelForm
+    template_name = 'catalog/manual_bootstrap_form.html'
 
 
 class ManualDeleteView(DeleteView):
@@ -113,13 +119,15 @@ class SetDetailView(DetailView):
 class SetCreateView(CreateView):
     model = Set
 
-    fields = ['id', 'name', 'year', 'number_of_pieces', 'price', 'image']
+    form_class = SetModelForm
+    template_name = 'catalog/set_bootstrap_form.html'
 
 
 class SetUpdateView(UpdateView):
     model = Set
 
-    fields = ['id', 'name', 'year', 'number_of_pieces', 'price', 'image']
+    form_class = SetModelForm
+    template_name = 'catalog/set_bootstrap_form.html'
 
 
 class SetDeleteView(DeleteView):
