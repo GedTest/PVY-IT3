@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from catalog.forms import BrickModelForm, ManualModelForm, SetModelForm
 from catalog.models import Brick, Manual, Set
@@ -43,24 +44,29 @@ class BrickDetailView(DetailView):
     template_name = 'Brick/detail.html'
 
 
-class BrickCreateView(CreateView):
+class BrickCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Brick
 
+    permission_required = 'catalog.add_brick'
+    login_url = '/accounts/login/'
     form_class = BrickModelForm
     template_name = 'catalog/brick_bootstrap_form.html'
 
 
-class BrickUpdateView(UpdateView):
+class BrickUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Brick
 
-    #fields = ['id', 'name', 'color', 'type', 'image', 'sets']
+    permission_required = 'catalog.change_brick'
+    login_url = '/accounts/login/'
     form_class = BrickModelForm
     template_name = 'catalog/brick_bootstrap_form.html'
 
 
-class BrickDeleteView(DeleteView):
+class BrickDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Brick
 
+    permission_required = 'catalog.delete_brick'
+    login_url = '/accounts/login/'
     success_url = reverse_lazy('brick_list')
 
 
@@ -80,23 +86,29 @@ class ManualDetailView(DetailView):
     template_name = 'Manual/detail.html'
 
 
-class ManualCreateView(CreateView):
+class ManualCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Manual
 
+    permission_required = 'catalog.add_manual'
+    login_url = '/accounts/login/'
     form_class = ManualModelForm
     template_name = 'catalog/manual_bootstrap_form.html'
 
 
-class ManualUpdateView(UpdateView):
+class ManualUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Manual
 
+    permission_required = 'catalog.change_manual'
+    login_url = '/accounts/login/'
     form_class = ManualModelForm
     template_name = 'catalog/manual_bootstrap_form.html'
 
 
-class ManualDeleteView(DeleteView):
+class ManualDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Manual
 
+    permission_required = 'catalog.delete_manual'
+    login_url = '/accounts/login/'
     success_url = reverse_lazy('manual_list')
 
 
@@ -116,21 +128,27 @@ class SetDetailView(DetailView):
     template_name = 'Set/detail.html'
 
 
-class SetCreateView(CreateView):
+class SetCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Set
 
+    permission_required = 'catalog.add_set'
+    login_url = '/accounts/login/'
     form_class = SetModelForm
     template_name = 'catalog/set_bootstrap_form.html'
 
 
-class SetUpdateView(UpdateView):
+class SetUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Set
 
+    permission_required = 'catalog.change_set'
+    login_url = '/accounts/login/'
     form_class = SetModelForm
     template_name = 'catalog/set_bootstrap_form.html'
 
 
-class SetDeleteView(DeleteView):
+class SetDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Set
 
+    permission_required = 'catalog.delete_set'
+    login_url = '/accounts/login/'
     success_url = reverse_lazy('set_list')

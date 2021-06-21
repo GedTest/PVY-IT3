@@ -19,12 +19,18 @@
         </div>
     </div>
 </div>
+{% if user.is_authenticated %}
 <div class="row mb-3">
     <div class="col-sm-12 text-center">
+        {% if perms.catalog.change_brick %}
         <a href="{% url 'brick_update' brick.pk %}" class="btn btn-primary">Edit</a>
+        {% endif %}
+        {% if perms.catalog.delete_brick %}
         <a href="{% url 'brick_delete' brick.pk %}" class="btn btn-danger">Delete</a>
+        {% endif %}
     </div>
 </div>
+{% endif %}
 {% endblock %}
 {% block scripts %}{% endblock %}
 
