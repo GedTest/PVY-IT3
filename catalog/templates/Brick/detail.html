@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Detail of brick{% endblock %}
+
+{% block content %}
+<div class="row mt-5 mb-3">
+    <div class="col-lg-6 mb-3">
+        <h2> {{ brick.name|upper }} [{{ brick.id }}] </h2>
+        <p>Color: {{ brick.color }}</p>
+        <p>Type: {{ brick.type }}</p>
+        <div class="row">
+            <div class="col-md-3">
+                {% if brick.image %}
+                <a href="{{ brick.image.url }}" data-toggle="lightbox" data-gallery="gallery">
+                    <img src="{{ brick.image.url }}" class="img-fluid" alt="Image of brick">
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-sm-12 text-center">
+        <a href="{% url 'brick_update' brick.pk %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'brick_delete' brick.pk %}" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}{% endblock %}
+
+
+
+
+

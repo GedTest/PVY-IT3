@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Detail of set{% endblock %}
+
+{% block content %}
+<div class="row mt-5 mb-3">
+    <div class="col-lg-6 mb-3">
+        <h2> {{ set.name|upper }} [{{ set.id }}]</h2>
+        <p>This set was released in : {{ set.year }}</p>
+        <p>Has {{ set.number_of_pieces }} pieces</p>
+        <p>Price: {{ set.price }}$</p>
+        <div class="row">
+            <div class="col-md-3">
+                {% if set.image %}
+                <a href="{{ set.image.url }}" data-toggle="lightbox" data-gallery="gallery">
+                    <img src="{{ set.image.url }}" class="img-fluid" alt="Image of set">
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-sm-12 text-center">
+        <a href="{% url 'set_update' set.pk %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'set_delete' set.pk %}" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}{% endblock %}
+
+
+
+
+
